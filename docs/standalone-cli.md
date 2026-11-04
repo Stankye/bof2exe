@@ -77,6 +77,8 @@ The generated program accepts `--input example.bin`; it reads that data when inv
 
 ## Output and exit codes
 
+`BeaconDownload` output is saved as [local artifacts](downloads.md) in a fresh directory beneath the working directory, with paths reported on stdout. Each named buffer is preserved without overwriting another download. Artifact write failures make the CLI fail.
+
 Callback output is written as raw bytes; error callback kind 13 goes to stderr. Generated tools return 2 for argument/validation errors and 1 for reported module errors. Set `error_exit = false` at the schema root if an object's error callbacks should not change its exit status. Help/version return 0. Native execution occurs in the generated program's own process; an object fault can terminate it. The runtime's existing Windows x64 compatibility limits still apply.
 
 The converter prefers the sibling `bof2exe-runner.exe` template to keep output smaller. Keep the converter and template from the same release together when building. If the template is absent, the converter can use its own executable image; the generated command still exposes only its declared CLI. The runner and object are copied into the final executable, so distributing the generated tool requires only that executable.

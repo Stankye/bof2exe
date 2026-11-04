@@ -13,7 +13,7 @@ Version 0.4.1 converts BOFs into standalone Windows x64 CLIs. This matrix descri
 | COMDAT | ANY, SAME_SIZE, EXACT_MATCH, LARGEST, NEWEST, NODUPLICATES and associative chains | Conservative errors for EXACT_MATCH weak/cross-section local targets or unmappable live locals in discarded sections |
 | Imports | Supported Beacon names, CRT helpers, stack probes, four unqualified loader APIs, DLL$Export and __imp_ convention | DLL exports must exist in System32; unknown references fail |
 | Beacon data | Parse/Ptr/Int/Short/Length/Extract | Pointer validity remains the native caller's responsibility |
-| Beacon output | Output/Printf, original callback kinds and raw bytes | Synchronous executing-thread callbacks; no native download protocol |
+| Beacon output | Output/Printf, original callback kinds and raw bytes; BeaconDownload captures named local artifacts | Synchronous executing-thread callbacks; 64 MiB shared capture limit; no C2 download protocol. See [download behavior](downloads.md). |
 | Beacon format | Alloc/Reset/Free/Append/Printf/ToString/Int | No full Beacon session state |
 | Utility API | toWideChar with Windows ANSI conversion | No token, process-injection, data-store, syscall, or gate session emulation |
 | CRT helpers | memcpy/memmove/memset/memcmp, strlen/strcmp/strncmp/strcpy/strncpy/strcat/strncat, case-insensitive and wide comparisons listed by capabilities | Not a complete statically linked CRT; no constructors/TLS initialization |

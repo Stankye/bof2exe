@@ -13,6 +13,7 @@ pub const BEACON_APIS: &[&str] = &[
     "BeaconDataExtract",
     "BeaconDataPtr",
     "BeaconOutput",
+    "BeaconDownload",
     "BeaconPrintf",
     "BeaconFormatAlloc",
     "BeaconFormatReset",

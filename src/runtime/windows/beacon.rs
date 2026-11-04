@@ -121,6 +121,48 @@ extern "C" fn BeaconOutput(kind: i32, data: *const c_char, size: i32) {
         super::bof2exe_output(kind, data, size);
     }
 }
+extern "C" fn BeaconDownload(filename: *const c_char, data: *const c_char, length: u32) -> i32 {
+    fn copy_download(
+        filename: *const c_char,
+        data: *const c_char,
+        length: u32,
+    ) -> anyhow::Result<bool> {
+        anyhow::ensure!(!filename.is_null(), "null download filename");
+        anyhow::ensure!(
+            length as usize <= crate::MAX_INPUT,
+            "download exceeds capture limit"
+        );
+        anyhow::ensure!(length == 0 || !data.is_null(), "null download data");
+        let mut name = Vec::new();
+        // The native caller must supply a valid NUL-terminated filename and readable buffer.
+        for index in 0..=crate::downloads::MAX_NAME {
+            let byte = unsafe { filename.add(index).read() } as u8;
+            if byte == 0 {
+                let filename = std::str::from_utf8(&name)?;
+                let bytes = if length == 0 {
+                    &[]
+                } else {
+                    unsafe { std::slice::from_raw_parts(data.cast::<u8>(), length as usize) }
+                };
+                let event = crate::downloads::capture(filename, bytes)?;
+                return Ok(super::capture_download(event));
+            }
+            name.push(byte);
+        }
+        anyhow::bail!("download filename exceeds 255 UTF-8 bytes")
+    }
+    match copy_download(filename, data, length) {
+        Ok(true) => 1,
+        result => {
+            let message = match result {
+                Err(error) => format!("BeaconDownload: {error}\n"),
+                _ => "BeaconDownload: no active capture or capture limit reached\n".into(),
+            };
+            BeaconOutput(13, message.as_ptr().cast(), message.len() as i32);
+            0
+        }
+    }
+}
 fn render(format: *const c_char, args: *const c_char) -> Option<Vec<u8>> {
     if format.is_null() {
         return None;
@@ -240,6 +282,7 @@ pub(super) fn resolve(name: &str) -> Option<usize> {
         "BeaconDataLength" => BeaconDataLength as *const () as usize,
         "BeaconDataExtract" => BeaconDataExtract as *const () as usize,
         "BeaconOutput" => BeaconOutput as *const () as usize,
+        "BeaconDownload" => BeaconDownload as *const () as usize,
         "BeaconPrintf" => b2e_BeaconPrintf as *const () as usize,
         "BeaconFormatAlloc" => BeaconFormatAlloc as *const () as usize,
         "BeaconFormatReset" => BeaconFormatReset as *const () as usize,
@@ -256,6 +299,84 @@ pub(super) fn resolve(name: &str) -> Option<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn start_capture() {
+        super::super::OUTPUT.with(|out| {
+            *out.borrow_mut() = super::super::Capture {
+                active: true,
+                ..Default::default()
+            };
+        });
+    }
+    fn take_capture() -> super::super::Capture {
+        super::super::OUTPUT.with(|out| std::mem::take(&mut *out.borrow_mut()))
+    }
+    #[test]
+    fn download_bridge_resolves_abi_and_copies_the_buffer() {
+        start_capture();
+        let function: extern "C" fn(*const c_char, *const c_char, u32) -> i32 =
+            unsafe { std::mem::transmute(resolve("BeaconDownload").unwrap()) };
+        let mut bytes = [0u8, 255, 1, 0];
+        assert_eq!(
+            function(
+                c"payload.bin".as_ptr(),
+                bytes.as_ptr().cast(),
+                bytes.len() as u32
+            ),
+            1
+        );
+        bytes.fill(42);
+        assert_eq!(function(c"empty.bin".as_ptr(), ptr::null(), 0), 1);
+        let capture = take_capture();
+        assert!(!capture.overflow);
+        assert_eq!(capture.events.len(), 2);
+        let download = crate::downloads::decode(&capture.events[0])
+            .unwrap()
+            .unwrap();
+        assert_eq!(download.filename, "payload.bin");
+        assert_eq!(download.data, &[0, 255, 1, 0]);
+        assert!(crate::downloads::decode(&capture.events[1])
+            .unwrap()
+            .unwrap()
+            .data
+            .is_empty());
+    }
+    #[test]
+    fn download_bridge_rejects_invalid_inputs_limits_and_unregistered_threads() {
+        start_capture();
+        assert_eq!(BeaconDownload(ptr::null(), ptr::null(), 0), 0);
+        assert_eq!(BeaconDownload(c"data.bin".as_ptr(), ptr::null(), 1), 0);
+        assert_eq!(BeaconDownload(c"../escape".as_ptr(), c"x".as_ptr(), 1), 0);
+        assert_eq!(
+            BeaconDownload(
+                c"data.bin".as_ptr(),
+                c"x".as_ptr(),
+                crate::MAX_INPUT as u32 + 1
+            ),
+            0
+        );
+        let long = std::ffi::CString::new("x".repeat(256)).unwrap();
+        assert_eq!(BeaconDownload(long.as_ptr(), ptr::null(), 0), 0);
+        let invalid_utf8 = [255u8, 0];
+        assert_eq!(
+            BeaconDownload(invalid_utf8.as_ptr().cast(), ptr::null(), 0),
+            0
+        );
+        let capture = take_capture();
+        assert_eq!(capture.events.len(), 6);
+        assert!(capture.events.iter().all(|event| event.kind == 13));
+
+        start_capture();
+        let returned =
+            std::thread::spawn(|| BeaconDownload(c"worker.bin".as_ptr(), c"x".as_ptr(), 1))
+                .join()
+                .unwrap();
+        assert_eq!(returned, 0);
+        assert!(take_capture().events.is_empty());
+        start_capture();
+        super::super::OUTPUT.with(|out| out.borrow_mut().bytes = crate::MAX_INPUT);
+        assert_eq!(BeaconDownload(c"limit.bin".as_ptr(), c"x".as_ptr(), 1), 0);
+        assert!(take_capture().overflow);
+    }
     fn empty() -> Buffer {
         Buffer {
             original: ptr::null_mut(),

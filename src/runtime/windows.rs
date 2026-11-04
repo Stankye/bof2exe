@@ -57,8 +57,32 @@ struct Capture {
     events: Vec<Output>,
     bytes: usize,
     overflow: bool,
+    active: bool,
 }
-thread_local! { static OUTPUT: RefCell<Capture> = const { RefCell::new(Capture { events: Vec::new(), bytes: 0, overflow: false }) }; }
+thread_local! { static OUTPUT: RefCell<Capture> = const { RefCell::new(Capture { events: Vec::new(), bytes: 0, overflow: false, active: false }) }; }
+
+fn capture_download(event: Output) -> bool {
+    OUTPUT.with(|slot| {
+        let mut out = slot.borrow_mut();
+        // An unregistered worker thread has no executing-call capture to receive the file.
+        if !out.active {
+            return false;
+        }
+        if out.bytes.saturating_add(event.data.len()) > crate::MAX_INPUT
+            || out.events.len() >= 65536
+        {
+            out.overflow = true;
+            return false;
+        }
+        if out.events.try_reserve(1).is_err() {
+            out.overflow = true;
+            return false;
+        }
+        out.bytes += event.data.len();
+        out.events.push(event);
+        true
+    })
+}
 #[no_mangle]
 extern "C" fn bof2exe_output(kind: i32, data: *const c_char, length: i32) {
     if data.is_null() || length < 0 {
@@ -341,7 +365,12 @@ pub(super) unsafe fn execute(
     let address = memory.address(offsets[symbol.section as usize - 1] + symbol.value as usize);
     // SAFETY: entry was validated in an executable section; caller guarantees its ABI and behavior.
     let function: unsafe extern "C" fn(*mut u8, i32) = unsafe { std::mem::transmute(address) };
-    OUTPUT.with(|out| *out.borrow_mut() = Capture::default());
+    OUTPUT.with(|out| {
+        *out.borrow_mut() = Capture {
+            active: true,
+            ..Capture::default()
+        }
+    });
     unsafe {
         function(arguments.as_mut_ptr(), arguments.len() as i32);
     }

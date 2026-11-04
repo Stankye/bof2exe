@@ -49,6 +49,8 @@ The pinned TrustedSec validation covers **72 x64 objects statically** and **11 g
 
 ## Documentation
 
+The runtime supports [standalone download artifacts](docs/downloads.md) through `BeaconDownload`. Native execution remains subject to the runtime's documented thread and capture limits.
+
 | Topic | Guide |
 | --- | --- |
 | Schemas, flags, defaults, and generated tools | [Standalone CLIs](docs/standalone-cli.md) |

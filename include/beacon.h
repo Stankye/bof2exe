@@ -20,6 +20,8 @@ BOF_IMPORT short BeaconDataShort(datap *);
 BOF_IMPORT int BeaconDataLength(datap *);
 BOF_IMPORT char *BeaconDataExtract(datap *, int *);
 BOF_IMPORT void BeaconOutput(int, char *, int);
+/* Copies a UTF-8 leaf filename and buffer into standalone local artifact output. */
+BOF_IMPORT int BeaconDownload(const char *, const char *, unsigned int);
 BOF_IMPORT void BeaconPrintf(int, char *, ...);
 BOF_IMPORT void BeaconFormatAlloc(formatp *, int);
 BOF_IMPORT void BeaconFormatReset(formatp *);
