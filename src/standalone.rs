@@ -45,13 +45,12 @@ pub unsafe fn run_embedded(payload: Payload) -> Result<()> {
     // SAFETY: the executable caller explicitly opts into this embedded native program.
     let output = unsafe { runtime::execute(&object, &payload.entry, &mut arguments)? };
     let failed = error_exit && output.iter().any(|o| o.kind == 13);
-    for item in output {
-        if item.kind == 13 {
-            std::io::stderr().write_all(&item.data)?;
-        } else {
-            std::io::stdout().write_all(&item.data)?;
-        }
-    }
+    crate::downloads::write_output(
+        &output,
+        &mut std::io::stdout(),
+        &mut std::io::stderr(),
+        &std::env::current_dir()?,
+    )?;
     std::io::stdout().flush()?;
     std::io::stderr().flush()?;
     if failed {

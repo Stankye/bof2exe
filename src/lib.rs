@@ -8,6 +8,7 @@ pub mod bundle;
 pub mod cna;
 pub mod coff;
 mod comdat;
+pub mod downloads;
 pub mod inspect;
 pub mod library;
 pub mod link;

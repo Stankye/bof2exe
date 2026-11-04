@@ -336,6 +336,15 @@ fn app() -> Result<()> {
                 "relocations": ["ABSOLUTE", "ADDR64", "ADDR32", "ADDR32NB", "REL32", "REL32_1", "REL32_2", "REL32_3", "REL32_4", "REL32_5", "SECTION", "SECREL"],
                 "beacon_apis": inspect::BEACON_APIS, "crt_helpers": inspect::CRT_APIS, "compiler_helpers": inspect::COMPILER_APIS,
                 "loader_apis": inspect::LOADER_APIS,
+                "downloads": {
+                    "api": "BeaconDownload",
+                    "storage": "local artifacts; no C2 transport",
+                    "filename_encoding": "UTF-8 leaf names",
+                    "max_filename_bytes": 255,
+                    "shared_capture_limit_bytes": bof2exe::MAX_INPUT,
+                    "event_kind": bof2exe::downloads::KIND,
+                    "threads": "synchronous executing thread only"
+                },
                 "linking": ["multiple objects", "lazy or whole library members", "strong/common symbols", "weak aliases (NOLIBRARY/LIBRARY/ALIAS)", "COMDAT ANY/SAME_SIZE/EXACT_MATCH/LARGEST/NEWEST and associative groups", "embedded resources", "extended relocations"],
                 "fixture_suites": ["static inspection", "expected incompatibility", "worker execution", "callback byte expectations", "JSON reports"],
                 "unwind": "validated AMD64 version-1 function table registration for synchronous calls",
@@ -519,13 +528,12 @@ fn print_output(output: Vec<runtime::Output>, json: bool) -> Result<()> {
     if json {
         println!("{}", serde_json::to_string_pretty(&output)?);
     } else {
-        for item in output {
-            if item.kind == 13 {
-                std::io::stderr().write_all(&item.data)?;
-            } else {
-                std::io::stdout().write_all(&item.data)?;
-            }
-        }
+        bof2exe::downloads::write_output(
+            &output,
+            &mut std::io::stdout(),
+            &mut std::io::stderr(),
+            &std::env::current_dir()?,
+        )?;
     }
     Ok(())
 }
