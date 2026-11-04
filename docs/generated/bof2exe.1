@@ -1,0 +1,34 @@
+.TH BOF2EXE 1
+.SH NAME
+bof2exe
+.SH USAGE
+.nf
+Turn Windows BOFs into standalone command\-line tools
+
+Usage: bof2exe <COMMAND>
+
+Commands:
+  init          Create an editable command\-line schema for a BOF, optionally using CNA metadata
+  build         Build a standalone CLI from a tool schema or directly from a BOF/CNA signature
+  inspect       Describe sections, symbols, imports, and compatibility without executing code
+  check         Validate an object; exit unsuccessfully when static compatibility checks fail
+  run           Run an object in a separate worker process (Windows x64)
+  bundle        Create an executable containing the object and default arguments (Windows x64)
+  pack          Encode typed arguments for use with the library or another Beacon runtime
+  cna           Analyze CNA command registrations, packing signatures, and parameter expressions
+  link          Combine objects/resources into deterministic relocatable COFF
+  capabilities  Print the implemented compatibility surface and remaining gaps
+  library       Inspect definitions and references in a COFF archive or ZIP object collection
+  suite         Inspect a local fixture suite; \-\-execute also checks output in isolated workers
+  docs          Generate Markdown CLI reference and roff manuals from this command model
+  completions   Generate command and option name completion from this command model
+  module        Describe or document a versioned module manifest
+  help          Print this message or the help of the given subcommand(s)
+
+Options:
+  \-h, \-\-help
+          Print help
+
+  \-V, \-\-version
+          Print version
+.fi

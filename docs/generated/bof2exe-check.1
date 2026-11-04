@@ -1,0 +1,26 @@
+.TH BOF2EXE-CHECK 1
+.SH NAME
+bof2exe check
+.SH USAGE
+.nf
+Validate an object; exit unsuccessfully when static compatibility checks fail
+
+Usage: bof2exe check [OPTIONS] [OBJECT]
+
+Arguments:
+  [OBJECT]
+          Local standard COFF object
+
+Options:
+      \-\-manifest <MANIFEST>
+          TOML manifest; relative object paths resolve beside this file
+
+  \-e, \-\-entry <ENTRY>
+          Override the manifest entrypoint (otherwise defaults to go)
+
+      \-\-json
+          
+
+  \-h, \-\-help
+          Print help
+.fi

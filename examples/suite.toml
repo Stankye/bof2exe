@@ -1,0 +1,24 @@
+schema = 1
+name = "local compiler fixtures"
+
+[[cases]]
+name = "typed greeting"
+object = "../target/fixtures/hello.o"
+arguments = [{type="int",value=7}, {type="str",value="world"}]
+[[cases.expect]]
+kind = 0
+contains = "hello world: count=7"
+
+[[cases]]
+name = "AMD64 unwind lookup"
+object = "../target/fixtures/unwind.o"
+[[cases.expect]]
+kind = 0
+contains = "unwind=1"
+
+[[cases]]
+name = "negative entrypoint check"
+object = "../target/fixtures/hello.o"
+entry = "missing"
+compatible = false
+issue_contains = "entrypoint"

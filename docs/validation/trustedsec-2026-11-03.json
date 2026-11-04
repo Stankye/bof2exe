@@ -1,0 +1,447 @@
+{
+    "schema":  1,
+    "date":  "2026-11-03",
+    "converter_version":  "0.4.1",
+    "platform":  "windows-x86_64-msvc",
+    "repository":  "https://github.com/trustedsec/CS-Situational-Awareness-BOF",
+    "commit":  "fd96c4dcd88fd00eea902bebb20d0736e48f5f61",
+    "artifact_origin":  "unmodified upstream prebuilt objects",
+    "static_before":  {
+                          "passed":  64,
+                          "failed":  8
+                      },
+    "static_after":  {
+                         "passed":  72,
+                         "failed":  0
+                     },
+    "standalone":  {
+                       "passed":  11,
+                       "failed":  0,
+                       "copied_source_and_schema_removed_before_execution":  true
+                   },
+    "objects":  [
+                    {
+                        "file":  "aadjoininfo.x64.o",
+                        "sha256":  "5aa7722f2651ebc6993376b1b2ba393d3419aa2bced2d8fedfd443af6a70c494",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adcs_enum.x64.o",
+                        "sha256":  "3097b0801b5f3d4e61d3b42ba8f43f734a31b184f857e6549336309a51158489",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adcs_enum_com.x64.o",
+                        "sha256":  "f88642f724a8e60b578bb06cc1e3a357e23b7656f84e3527e48f32818004d196",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adcs_enum_com2.x64.o",
+                        "sha256":  "a263201fe506f670523c1c29ef875bbad110f294c26da7b294f6b53ab91a3783",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adrblist.x64.o",
+                        "sha256":  "ff967487d3e082787407b21bbbc8ce2a84645c8444a6b10d99c099f02ec2e6d3",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adrbperms.x64.o",
+                        "sha256":  "0a4ff5e98dd64a0762f7fc560bebab23a020909b5e7753c04411bb78c19b81ee",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adrbstatus.x64.o",
+                        "sha256":  "73b1bc4a29166533a62f24d78865b07852b48fd24074f0708944ef0aebad630f",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "adv_audit_policies.x64.o",
+                        "sha256":  "713c6289372d06f735bb6fbf5eb02610e715e3a07d62e8a8731e1f8ac8c071c5",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "arp.x64.o",
+                        "sha256":  "19591a2cac9d3c63a0d75e1bfb4d0fe7b2989ab57bbccc15a347cd5c80f49979",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "cacls.x64.o",
+                        "sha256":  "9107b4dbabb6b7b50c4a92d69dca6804564f9fc9a6b0089f6e58cf01828a4440",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "cat.x64.o",
+                        "sha256":  "42e1b308f1055d9224040183df317c9b7667ba3e443b1f19e6747da2b6978f59",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "dir.x64.o",
+                        "sha256":  "ed39086c9dfb0bb139bc1cda40e0734b149489f1ded9712f0ac0a9cb37ddec3d",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "driversigs.x64.o",
+                        "sha256":  "7ada3658d6966e975cacd0d302a1590b3ae504fb20b169f2e72b0942b474a3ea",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "enum_filter_driver.x64.o",
+                        "sha256":  "edbe4eb9975492064808bf937c4e3e764dbc477dfc956a327487a027992ce45c",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "enumlocalsessions.x64.o",
+                        "sha256":  "f8e42585a9f064c9255a41db49c689af9933e05985e85733756954ef8cf3f0bb",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "env.x64.o",
+                        "sha256":  "fa081fae2f0ea442c0f25e99c2cb6af6b299db3dc6712125df85c09d6f9dd4e0",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "findLoadedModule.x64.o",
+                        "sha256":  "c0a9a5579d2c78482ae7bf5a34a998b941794b5c6fb57da3479de5a53ba80d0e",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "get-netsession.x64.o",
+                        "sha256":  "31108697eb18a969a2ecf7e6b6d6cb03e20f0448e90156efbd335a0817767db4",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "get-netsession2.x64.o",
+                        "sha256":  "dc474ab4d3196450d91ae23ec7ca3dc864676948fea19196ccdb09a9250da679",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "get_dpapi_system.x64.o",
+                        "sha256":  "f881eb3f54f82860856c49b6b818f5bf7bcf995b226fcccd462b41ee3e29af4b",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "get_password_policy.x64.o",
+                        "sha256":  "5f276ebe9230a9b19b230a2b5cdfd0fdcc3f94f1481a5fa52f468935aa2d6af2",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "get_session_info.x64.o",
+                        "sha256":  "665f6464cbb9e6398b60ec4da8689deeeedcfbf53a03a4cbfea6515fd4e0b2f1",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "hostname.x64.o",
+                        "sha256":  "0bc59f6ee581e7d099d39874b66cea5966b82075b0276247cd13556092848478",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "ipconfig.x64.o",
+                        "sha256":  "a489adf6d2191ceeefe57b7cf60ff2236a9d0c4cafeb1be830df10ef6c046363",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "ldapsearch.x64.o",
+                        "sha256":  "3e016cbc3883acd8dcbd9225d940ad25ad2f3454927a7932d45bc1936709f0bd",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "ldapsecuritycheck.x64.o",
+                        "sha256":  "b91980f94180f810bfa633b3964e22ec715933b5f6a94a70bfa0fe8232e16f2f",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "list_firewall_rules.x64.o",
+                        "sha256":  "c7096dec51f58927a70a99b551a5c84379395136724d14108bdb77ba26f03f86",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "listdns.x64.o",
+                        "sha256":  "83ba901003adb5546343477f806de754e768f81ae597c9e5ba434da6470de4d1",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "listmods.x64.o",
+                        "sha256":  "a6212f6116a7e2f031576288197ab59ccec71dbde6e7387049bc5be17a406822",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "locale.x64.o",
+                        "sha256":  "baa848f397ffd7c9b3541cac29a8634405aedb05b47b9f923647dfdb5dc881a2",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "md5.x64.o",
+                        "sha256":  "765b86c6086ac4b816afd9759acf78a58987b45972964014cd56024dd4b86c9b",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netgroup.x64.o",
+                        "sha256":  "ba8abb7418feca897b562a67d4483ce5294dbdfc984c1d94a43e43853ba7916f",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netlocalgroup.x64.o",
+                        "sha256":  "9d33a0d712968ed8675da98cba0b647da0bd91a0913cfa9a51ed56009f8a7207",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netlocalgroup2.x64.o",
+                        "sha256":  "2a791d019470b13a4c97b250eccfa87932a9031059e8001ef3818eff76754afe",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netloggedon.x64.o",
+                        "sha256":  "1e0a02d369af69b4b9207a51c4f56b5e89888eea73308afd4ddadb133cbdedde",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netloggedon2.x64.o",
+                        "sha256":  "285b757a8c777be07859de88cf47374380aa4e8823eda0e358814202bf390c07",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netshares.x64.o",
+                        "sha256":  "9337655f67a226c723550be84b2152cd6e9ddca9ef729e0324b2629c3d67c7ae",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netstat.x64.o",
+                        "sha256":  "093d483cce679580e893b270134aae5f7b6d3ec92189b92df12f2ea08eae8d39",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "nettime.x64.o",
+                        "sha256":  "912a99f5b6e564f2aa5cc0a4516a681112366b40f3813fa933f69376f1454546",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netuptime.x64.o",
+                        "sha256":  "2d72676388718bfc61f3a4edd1eb008a15772ce72b8dcb47a217cc518f03459e",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netuse.x64.o",
+                        "sha256":  "466f9cb5cc0d214c714789ae9b468f46398f322b833df2082fbe98025abcaab0",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netuser.x64.o",
+                        "sha256":  "f99befd69ab112303924b9822bb70a6060de9adfeb89878906a638ed3e5184b7",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netuserenum.x64.o",
+                        "sha256":  "b7fd6c7421bd4d386bda54e80f26d93d0ca542e06c7fb2dc3cda6b1da196b3a1",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "netview.x64.o",
+                        "sha256":  "6895f45f7247d2ca923c05a2207c9e631d1f1af025330cb56348a4574b462d26",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "nonpagedldapsearch.x64.o",
+                        "sha256":  "d17842430720fd3fb3dfc0fb8ccb80a015fd0f5fada2474f42ac3c514d0bf32d",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "notepad.x64.o",
+                        "sha256":  "52007994b8db76c743759d71a1efb41f675615a8712464b104d32bc0bf70a931",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "nslookup.x64.o",
+                        "sha256":  "8bb7b66350bf4c83de673330925a8f65d5657283ef8500b92ab124908eae8c9a",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "probe.x64.o",
+                        "sha256":  "6f8309c686dec1a2710046c53b8ac53ec3b9d7e445b41058506216c8949adf1b",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "reg_query.x64.o",
+                        "sha256":  "96e270c5890acd9bc443195005e5f33a139eafc553209e2915c3504a7eb218be",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "regsession.x64.o",
+                        "sha256":  "f3ffcb5fea38d5dac8b83623200f332ba44a0b21118045116a93c0e7cdff6b7f",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "resources.x64.o",
+                        "sha256":  "63a517c9e530e94865e247d259ee8056deb0af274dfdd1ad8542ad966d5d3dfe",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "routeprint.x64.o",
+                        "sha256":  "8e9c97d068581913a686390679459a5b75f06ecfd4a4086aff086628ea4f8d48",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_enum.x64.o",
+                        "sha256":  "85ba4141c800cb6cf5258bf36c2657c71e01252ed287dcc680725e885304142a",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_qc.x64.o",
+                        "sha256":  "fb7e4e90bb55c03fe98d38a23e54548e5c55bc25a07b89db4f4c3befc8f38d61",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_qdescription.x64.o",
+                        "sha256":  "55607b66b915462a47e0ac4d42ae6bf619f2512530ff4d521311d978b0d6a5f9",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_qfailure.x64.o",
+                        "sha256":  "3a6a1f6119e093bbf0ea0c17dead70cfc34a05a74e20f307600708b60b042435",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_qtriggerinfo.x64.o",
+                        "sha256":  "bf1c9165d12c8dee063c4b61af1a3b31aedec5a39abac0bedd3597939988e1a2",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sc_query.x64.o",
+                        "sha256":  "dfa318c059c29344fa212356e1099f9ae60ef55d08c34f695e30929ef56e6f78",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "schtasksenum.x64.o",
+                        "sha256":  "c59330d8b02509b8aef85390adef16deaf4ffda2c6720c1193406057524633e1",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "schtasksquery.x64.o",
+                        "sha256":  "5b2a55c06a5fb92c2ac63a9f10ea832c822ab1fb99fff6e2f50460197ad3a091",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sha1.x64.o",
+                        "sha256":  "8cb2184aadb4c356affe737d055f632ea104f886d3a0d0a2e4191ab0c4e38e92",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sha256.x64.o",
+                        "sha256":  "1826ce93dc1454562f6d454a8de0fac920f3d230c347ec2d2eacea50e2d2b5b6",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "sha512.x64.o",
+                        "sha256":  "a47b8858ccbf1d6d7102091370146d1cd731469cf9467c728b426d3bcdaa8a73",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "tasklist.x64.o",
+                        "sha256":  "d89d6cea34a1762bc56fbf4519ff167f71092fad1ad6fc5dc12594a71ecdb978",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "uptime.x64.o",
+                        "sha256":  "83cbc943831c106f299c5d5ad49f12f6bf44a33a72b91fc75bcc6b0da56f414f",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "useridletime.x64.o",
+                        "sha256":  "177a26cc940cf5b9934c6e0cecbb89aff7c2d2b59fd799aa0bfe0f9c9bdbc10d",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "vol.x64.o",
+                        "sha256":  "01eb175d248d78ef16d0ccb68963f01bf270b26e26697274628497884d2748ba",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "vssenum.x64.o",
+                        "sha256":  "46aa8f97d3d331e53241523af69fbcea9e692070f872cb3a49101caa5b745796",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "whoami.x64.o",
+                        "sha256":  "260c676ff1f4a68163aa4c1f4c1a7ad49a4943909eb54e0b1d3dfb89c67515bd",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "windowlist.x64.o",
+                        "sha256":  "bd53cd2f9c28a8da4de7f137868f4077dbfa186457691646e8bd186725cfa0f1",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "winver.x64.o",
+                        "sha256":  "73bf92d807b71daa7c05273aa6c594267a0daa2df636044996bcdc65157d5903",
+                        "compatible":  true
+                    },
+                    {
+                        "file":  "wmi_query.x64.o",
+                        "sha256":  "64cb86c48f5ca6c6595f3a5767928f9e45ca92b937a543a1815f3c16da22d97e",
+                        "compatible":  true
+                    }
+                ],
+    "native_cases":  [
+                         {
+                             "name":  "hostname",
+                             "passed":  true,
+                             "stdout_bytes":  98
+                         },
+                         {
+                             "name":  "locale",
+                             "passed":  true,
+                             "stdout_bytes":  89
+                         },
+                         {
+                             "name":  "resources",
+                             "passed":  true,
+                             "stdout_bytes":  74
+                         },
+                         {
+                             "name":  "uptime",
+                             "passed":  true,
+                             "stdout_bytes":  111
+                         },
+                         {
+                             "name":  "useridletime",
+                             "passed":  true,
+                             "stdout_bytes":  61
+                         },
+                         {
+                             "name":  "whoami",
+                             "passed":  true,
+                             "stdout_bytes":  2894
+                         },
+                         {
+                             "name":  "winver",
+                             "passed":  true,
+                             "stdout_bytes":  46
+                         },
+                         {
+                             "name":  "md5",
+                             "passed":  true,
+                             "stdout_bytes":  109
+                         },
+                         {
+                             "name":  "sha256",
+                             "passed":  true,
+                             "stdout_bytes":  145
+                         },
+                         {
+                             "name":  "cat",
+                             "passed":  true,
+                             "stdout_bytes":  31
+                         },
+                         {
+                             "name":  "dir",
+                             "passed":  true,
+                             "stdout_bytes":  1297
+                         }
+                     ],
+    "limitations":  [
+                        "Static success is not execution coverage for the remaining 61 objects.",
+                        "No domain, remote-host, credential or mutation behavior was exercised.",
+                        "x86 objects were excluded.",
+                        "CNA transforms, defaults and helpers are not evaluated."
+                    ]
+}

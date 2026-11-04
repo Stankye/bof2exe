@@ -1,0 +1,46 @@
+.TH BOF2EXE-RUN 1
+.SH NAME
+bof2exe run
+.SH USAGE
+.nf
+Run an object in a separate worker process (Windows x64)
+
+Usage: bof2exe run [OPTIONS] [OBJECT] [\-\- <ARGUMENTS>...]
+
+Arguments:
+  [OBJECT]
+          Local standard COFF object
+
+  [ARGUMENTS]...
+          Replace manifest defaults with typed arguments after \-\-
+
+Options:
+      \-\-manifest <MANIFEST>
+          TOML manifest; relative object paths resolve beside this file
+
+  \-e, \-\-entry <ENTRY>
+          Override the manifest entrypoint (otherwise defaults to go)
+
+      \-\-timeout <TIMEOUT>
+          Deadline in seconds; terminate the worker when it expires
+          
+          [default: 30]
+
+      \-\-json
+          Return callback kinds and raw byte arrays as JSON
+
+      \-\-format <FORMAT>
+          Raw values follow this bof_pack format: b, i, s, z, Z
+
+      \-\-cna <CNA>
+          Infer wire types from a CNA command without executing the script
+
+      \-\-command <COMMAND>
+          Alias/subroutine containing the selected bof_pack call
+
+      \-\-variant <VARIANT>
+          One\-based bof_pack call index for commands with multiple pack calls
+
+  \-h, \-\-help
+          Print help
+.fi

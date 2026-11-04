@@ -1,0 +1,13 @@
+schema = 1
+name = "hello"
+description = "A local fixture exercising argument parsing, BSS, printf, and a System32 import."
+object = "../target/fixtures/hello.o"
+entry = "go"
+
+[[arguments]]
+type = "int"
+value = 7
+
+[[arguments]]
+type = "str"
+value = "world"

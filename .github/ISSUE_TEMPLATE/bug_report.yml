@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a conversion, compatibility, or command-line issue.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of bof2exe --version.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows version, architecture, Rust toolchain, and BOF compiler flags where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Commands, expected behavior, and a minimal reproducer you can share under its license.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Actual output
+      description: Error messages or check --json output. Redact private paths and sensitive data.

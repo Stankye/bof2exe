@@ -1,0 +1,44 @@
+.TH BOF2EXE-BUILD 1
+.SH NAME
+bof2exe build
+.SH USAGE
+.nf
+Build a standalone CLI from a tool schema or directly from a BOF/CNA signature
+
+Usage: bof2exe build [OPTIONS] \-\-output <OUTPUT> <INPUT>
+
+Arguments:
+  <INPUT>
+          Tool schema (.toml), or a local BOF for direct conversion
+
+Options:
+      \-\-format <FORMAT>
+          Raw values follow this bof_pack format: b, i, s, z, Z
+
+      \-\-cna <CNA>
+          Infer wire types from a CNA command without executing the script
+
+      \-\-command <COMMAND>
+          Alias/subroutine containing the selected bof_pack call
+
+      \-\-variant <VARIANT>
+          One\-based bof_pack call index for commands with multiple pack calls
+
+      \-\-name <NAME>
+          Generated command name; defaults to the BOF filename or schema name
+
+      \-\-description <DESCRIPTION>
+          Description shown in the generated command's help
+
+  \-e, \-\-entry <ENTRY>
+          
+
+  \-o, \-\-output <OUTPUT>
+          New standalone executable path
+
+      \-\-docs <DOCS>
+          Also write a Markdown reference for the generated command
+
+  \-h, \-\-help
+          Print help
+.fi

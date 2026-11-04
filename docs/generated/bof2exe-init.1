@@ -1,0 +1,41 @@
+.TH BOF2EXE-INIT 1
+.SH NAME
+bof2exe init
+.SH USAGE
+.nf
+Create an editable command\-line schema for a BOF, optionally using CNA metadata
+
+Usage: bof2exe init [OPTIONS] <INPUT>
+
+Arguments:
+  <INPUT>
+          Tool schema (.toml), or a local BOF for direct conversion
+
+Options:
+      \-\-format <FORMAT>
+          Raw values follow this bof_pack format: b, i, s, z, Z
+
+      \-\-cna <CNA>
+          Infer wire types from a CNA command without executing the script
+
+      \-\-command <COMMAND>
+          Alias/subroutine containing the selected bof_pack call
+
+      \-\-variant <VARIANT>
+          One\-based bof_pack call index for commands with multiple pack calls
+
+      \-\-name <NAME>
+          Generated command name; defaults to the BOF filename or schema name
+
+      \-\-description <DESCRIPTION>
+          Description shown in the generated command's help
+
+  \-e, \-\-entry <ENTRY>
+          
+
+  \-o, \-\-output <OUTPUT>
+          New schema path; defaults to the object name with .tool.toml
+
+  \-h, \-\-help
+          Print help
+.fi

@@ -1,0 +1,32 @@
+.TH BOF2EXE-PACK 1
+.SH NAME
+bof2exe pack
+.SH USAGE
+.nf
+Encode typed arguments for use with the library or another Beacon runtime
+
+Usage: bof2exe pack [OPTIONS] [\-\- <ARGUMENTS>...]
+
+Arguments:
+  [ARGUMENTS]...
+          
+
+Options:
+  \-o, \-\-output <OUTPUT>
+          New output file; otherwise emit base64 to stdout
+
+      \-\-format <FORMAT>
+          Raw values follow this bof_pack format: b, i, s, z, Z
+
+      \-\-cna <CNA>
+          Infer wire types from a CNA command without executing the script
+
+      \-\-command <COMMAND>
+          Alias/subroutine containing the selected bof_pack call
+
+      \-\-variant <VARIANT>
+          One\-based bof_pack call index for commands with multiple pack calls
+
+  \-h, \-\-help
+          Print help
+.fi

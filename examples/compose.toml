@@ -1,0 +1,8 @@
+schema = 1
+name = "composed-example"
+entry = "go"
+objects = ["../target/fixtures/link_main.o", "../target/fixtures/link_helper.o"]
+
+[[resources]]
+path = "message.txt"
+symbol = "greeting"

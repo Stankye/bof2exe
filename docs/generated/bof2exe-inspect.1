@@ -1,0 +1,26 @@
+.TH BOF2EXE-INSPECT 1
+.SH NAME
+bof2exe inspect
+.SH USAGE
+.nf
+Describe sections, symbols, imports, and compatibility without executing code
+
+Usage: bof2exe inspect [OPTIONS] [OBJECT]
+
+Arguments:
+  [OBJECT]
+          Local standard COFF object
+
+Options:
+      \-\-manifest <MANIFEST>
+          TOML manifest; relative object paths resolve beside this file
+
+  \-e, \-\-entry <ENTRY>
+          Override the manifest entrypoint (otherwise defaults to go)
+
+      \-\-json
+          Emit a machine\-readable report
+
+  \-h, \-\-help
+          Print help
+.fi

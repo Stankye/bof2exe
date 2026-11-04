@@ -1,0 +1,20 @@
+schema = 1
+name = "hello"
+version = "1.0.0"
+description = "Print a greeting"
+object = "../target/fixtures/greeting.o"
+entry = "go"
+
+[[parameters]]
+name = "count"
+type = "int"
+short = "c"
+help = "Number to include in the greeting"
+default = "7"
+
+[[parameters]]
+name = "name"
+type = "str"
+short = "n"
+help = "Person to greet"
+required = true

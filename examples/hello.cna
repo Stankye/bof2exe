@@ -1,0 +1,8 @@
+# Original fixture: MIT OR Apache-2.0. Static metadata only; not run by bof2exe.
+beacon_command_register("hello", "Print a local greeting", "hello <count> <name>");
+alias hello {
+    local('$args $data');
+    $args = bof_pack($1, "iz", $2, $3);
+    $data = readbof($1, "hello");
+    beacon_inline_execute($1, $data, "go", $args);
+}

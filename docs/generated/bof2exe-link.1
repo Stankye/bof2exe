@@ -1,0 +1,38 @@
+.TH BOF2EXE-LINK 1
+.SH NAME
+bof2exe link
+.SH USAGE
+.nf
+Combine objects/resources into deterministic relocatable COFF
+
+Usage: bof2exe link [OPTIONS] [OBJECTS]...
+
+Arguments:
+  [OBJECTS]...
+          
+
+Options:
+      \-\-spec <SPEC>
+          Versioned TOML composition spec; paths resolve beside the spec
+
+  \-L, \-\-library <LIBRARIES>
+          Search a .lib/.a archive or ZIP collection for required COFF members
+
+      \-\-whole\-archive
+          Include every supplied library member, instead of resolving on demand
+
+  \-o, \-\-output <OUTPUT>
+          New COFF output path (required unless \-\-plan is set)
+
+      \-\-plan
+          Inspect the link result without writing it
+
+  \-e, \-\-entry <ENTRY>
+          
+
+      \-\-json
+          
+
+  \-h, \-\-help
+          Print help
+.fi

@@ -1,0 +1,41 @@
+.TH BOF2EXE-BUNDLE 1
+.SH NAME
+bof2exe bundle
+.SH USAGE
+.nf
+Create an executable containing the object and default arguments (Windows x64)
+
+Usage: bof2exe bundle [OPTIONS] \-\-output <OUTPUT> [OBJECT] [\-\- <ARGUMENTS>...]
+
+Arguments:
+  [OBJECT]
+          Local standard COFF object
+
+  [ARGUMENTS]...
+          
+
+Options:
+      \-\-manifest <MANIFEST>
+          TOML manifest; relative object paths resolve beside this file
+
+  \-e, \-\-entry <ENTRY>
+          Override the manifest entrypoint (otherwise defaults to go)
+
+  \-o, \-\-output <OUTPUT>
+          New executable path. Existing files are never overwritten
+
+      \-\-format <FORMAT>
+          Raw values follow this bof_pack format: b, i, s, z, Z
+
+      \-\-cna <CNA>
+          Infer wire types from a CNA command without executing the script
+
+      \-\-command <COMMAND>
+          Alias/subroutine containing the selected bof_pack call
+
+      \-\-variant <VARIANT>
+          One\-based bof_pack call index for commands with multiple pack calls
+
+  \-h, \-\-help
+          Print help
+.fi
